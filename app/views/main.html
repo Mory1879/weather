@@ -1,0 +1,44 @@
+<body ng-app="weatherApp" ng-controller="weatherCtrl">
+
+  <div class="jumbotron">
+    <h1>Weather app</h1>
+    <p class="lead">
+      Here you can check current weather in your city.
+    </p>
+    <p>
+      Type city name:
+      <input ng-model="city">
+    </p>
+    <p>
+      <a class="btn btn-lg btn-success" ng-click="findWeather(city)">Search
+        <span class="glyphicon glyphicon-ok"></span>
+      </a>
+    </p>
+    <div>
+      <h3>Current:
+        {{ place.item.condition.text }}
+        |
+        {{ place.item.condition.temp }}&degF
+        <img src="http://l.yimg.com/a/i/us/we/52/{{place.item.condition.code}}.gif"/></h3>
+
+      <table class="table table-striped">
+        <thead>
+          <th>Day</th>
+          <th>Weather</th>
+          <th>Temp</th>
+        </thead>
+        <tbody>
+          <tr ng-repeat="forecast in place.item.forecast">
+            <td>
+              <strong>{{ forecast.date }}</strong>
+            </td>
+            <td>{{ forecast.text }}</td>
+            <td>H:
+              {{ forecast.high }}&degF; | L:
+              {{ forecast.low }}&degF;</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</body>
